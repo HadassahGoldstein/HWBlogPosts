@@ -11,7 +11,6 @@ namespace HWBlogPosts.Controllers
 {
     public class HomeController : Controller
     {
-
         private string _connectionString =
          @"Data Source=.\sqlexpress; Initial Catalog=BlogPosts;Integrated Security=true;";
         public IActionResult Index(int page)
@@ -27,7 +26,6 @@ namespace HWBlogPosts.Controllers
         }
         public IActionResult IndividualBlog(int id = -1)
         {
-
             BlogPostDB db = new(_connectionString);
             if (id == -1)
             {
