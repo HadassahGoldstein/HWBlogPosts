@@ -1,0 +1,38 @@
+﻿@model HomeViewModel
+<div class="row">
+    <div class="col-md-8">
+        <h1>My Blog Posts</h1>
+        @foreach (BlogPost bp in Model.BlogPosts)
+        {
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <a href="/home/individualBlog?id=@bp.Id">@bp.Title</a>
+                    </h2>
+                    <p class="card-text">@bp.Text</p>
+                    <a href="/home/IndividualBlog?id=@bp.Id" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on @bp.Date.ToLongDateString()
+                </div>
+            </div>
+        }
+        <ul class="pagination justify-content-center mb-4"
+            @if (Model.AmountOfPages > (Model.Page + 1)) 
+            {
+                <li>
+                    <a href="/home/index?page=@((Model.Page)+1)" class="page-link">&larr;Older</a>
+                </li>
+            }
+            @if (Model.Page > 0)
+            {
+                <li>
+                    <a href="/home/index?page=@((Model.Page)-1)" class="page-link">Newer&rarr;</a>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>
+
+
